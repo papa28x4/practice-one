@@ -37,7 +37,7 @@ return [
         'database' => [
             'driver' => 'database',
             'table' => 'jobs',
-            'queue' => 'default',
+            'queue' => 'default', //leave this like this then run this php artisan queue:work --queue=high-priority,default
             'retry_after' => 90,
             'after_commit' => false,
         ],
