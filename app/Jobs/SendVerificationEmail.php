@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -30,12 +31,12 @@ class SendVerificationEmail implements ShouldQueue
      */
     public function handle()
     {
-        sleep(5);
+        // sleep(5);
         
-        $myfile = fopen("/app/docs/newfile.txt", "w");
-        $txt = "John Doe\n";
+        $myfile = fopen("app\\docs\\newfile.txt", "a");
+        $txt = Carbon::now()->addHour();
         fwrite($myfile, $txt);
-        $txt = "Jane Doe\n";
+        $txt = " Jane Doe\n";
         fwrite($myfile, $txt);
         fclose($myfile);
         logger('File created');
